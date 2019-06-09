@@ -1,0 +1,38 @@
+<!--
+  Generated template for the ProductsPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar color="primary">
+    <ion-title>Lista de productos</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+
+    <ion-searchbar
+    [(ngModel)]="filter"
+    placeholder="Buscar producto(s)"
+    [showCancelButton]="true"
+    (ionInput)="onInput($event)"
+    (ionCancel)="onCancel($event)" color="primary"> 
+  </ion-searchbar>
+
+  <h2 style="text-align:center" *ngIf="products.length < 1 && loaded === true">No hay productos</h2>
+
+    <ion-list>
+        <ion-item *ngFor="let product of products" (press)="ShowOptions(product)" (click)="Details(product)">
+  <!--<ion-avatar item-start>
+            <img src="{{product.image}}">
+          </ion-avatar> -->
+          <ion-icon name="basket" item-start></ion-icon>
+          <h2><b>{{product.name}}</b></h2>
+          <h3><b>Precio: </b>Q{{product.priceToSell}}</h3>
+          <p *ngIf="product.description !== ''">{{product.description}}</p>
+          <p *ngIf="product.description === ''"><b>Producto sin descripción</b></p>
+        </ion-item>
+      </ion-list>
+
+</ion-content>

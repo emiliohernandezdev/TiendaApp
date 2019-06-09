@@ -1,0 +1,57 @@
+<!--
+  Generated template for the LoginPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar color="primary">
+    <ion-title>Iniciar sesión</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+
+    <ion-card>
+        <img src="https://i2.wp.com/www.goodnewspilipinas.com/wp-content/uploads/2017/10/ecommerce-defsys.jpg?fit=1920%2C1080&ssl=1"/>
+        <ion-card-content>
+          <ion-card-title style="text-align:center">
+            Iniciar sesión
+            </ion-card-title>
+
+            <form (ngSubmit)="DoLogin()">
+                <ion-item>
+                    <ion-label floating>Correo electrónico</ion-label>
+                    <ion-input type="email" [(ngModel)]="email" name="email"></ion-input>
+                  </ion-item>
+                
+                  <ion-item>
+                    <ion-label floating>Contraseña</ion-label>
+                    <ion-input type="password" [(ngModel)]="password" name="password"></ion-input>
+                  </ion-item>
+                  <br/>
+                  <button ion-button round outline block type="submit" icon-end>
+                    Acceder
+                    <ion-icon name="arrow-forward"></ion-icon>
+                  </button>
+            </form>
+            
+            <div style="text-align:center">
+                <button ion-button round clear block color="primary" icon-end>
+                    ¿No tienes usuario?
+                    <ion-icon name="contact"></ion-icon>
+                  </button>
+              <button ion-button round clear block color="danger" icon-end (click)="RecoverPassword()">
+                ¿Olvidaste tu contraseña?
+                <ion-icon name="unlock"></ion-icon>
+              </button>
+            </div>
+            
+
+        
+        </ion-card-content>
+      </ion-card>
+
+
+
+</ion-content>

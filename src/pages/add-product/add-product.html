@@ -1,0 +1,70 @@
+<!--
+  Generated template for the AddProductPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar color="primary">
+    <ion-title>Agregar producto</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content block>
+
+    <ion-card>
+        <img src="https://i2.wp.com/www.goodnewspilipinas.com/wp-content/uploads/2017/10/ecommerce-defsys.jpg?fit=1920%2C1080&ssl=1"/>
+        <ion-card-content>
+          <ion-card-title style="text-align:center">
+            Agregar producto
+            </ion-card-title>
+            
+            <form>
+                <ion-item>
+                    <ion-label floating>Nombre</ion-label>
+                    <ion-input type="text" [(ngModel)]="product.name" name="name" required></ion-input>
+                  </ion-item>
+                
+                  <ion-item>
+                    <ion-label floating>Descripción</ion-label>
+                    <ion-textarea type="text" [(ngModel)]="product.description" name="desc"></ion-textarea>
+                  </ion-item>
+                      
+                    <ion-item>
+                        <ion-label floating>Precio de compra</ion-label>
+                        <ion-input type="number" [(ngModel)]="product.originalPrice" name="price" required></ion-input>
+                    </ion-item>
+
+
+                    <ion-item>
+                      <ion-label floating>Precio de venta</ion-label>
+                      <ion-input type="number" [(ngModel)]="product.priceToSell" name="pricets" required></ion-input>
+                  </ion-item>
+                    
+                    <ion-item>
+                        <ion-label floating>Cantidad a agregar</ion-label>
+                        <ion-input type="number" [(ngModel)]="product.stock" name="stock" required></ion-input>
+                    </ion-item>
+
+                    
+                    <br/>
+                    <button ion-button block round icon-end (click)="TakePhoto()" *ngIf="captureDataUrl === ''" [disabled]="product.name === ''">
+                        Tomar foto del producto
+                        <ion-icon name="camera"></ion-icon>
+                      </button>
+
+                      <div style="text-align:center" *ngIf="captureDataUrl !== ''">
+                        <img src="{{captureDataUrl}}">
+                      </div>
+
+                    <br/>
+                    <button ion-button block round icon-end (click)="Save()" [disabled]="product.name === '' || product.description === '' || product.category === '' || product.price === '' || product.stock === ''">
+                        Guardar
+                        <ion-icon name="checkmark-circle"></ion-icon>
+                      </button>
+            </form>
+
+        </ion-card-content>
+      </ion-card>
+
+</ion-content>

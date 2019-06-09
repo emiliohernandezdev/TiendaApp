@@ -1,0 +1,73 @@
+<!--
+  Generated template for the AddBillPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar color="primary">
+    <ion-title>Datos de compra:</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="Dismiss()">
+          <ion-icon name="close-circle"></ion-icon>
+        </button>
+  </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content block>
+
+        <img src="https://vilmanunez.com/wp-content/uploads/2013/09/vender-productos-en-blo.png"/>
+        <ion-card-content>
+          <ion-card-title style="text-align:center">
+            Vender producto
+            </ion-card-title>
+            
+            <form>
+                <ion-item>
+                    <ion-label floating>Nombre(s) del cliente</ion-label>
+                    <ion-input type="text" [(ngModel)]="client.name" name="name" required></ion-input>
+                  </ion-item>
+                
+                  <ion-item>
+                    <ion-label floating>Apellido(s) del cliente</ion-label>
+                    <ion-input type="text" [(ngModel)]="client.surname" name="sname" required></ion-input>
+                  </ion-item>
+                    <br/>
+                  <h4 style="text-align:center">Productos:</h4>
+                  <ion-list>
+                      <ion-item-sliding *ngFor="let product of products">
+                        <ion-item>
+                          <ion-avatar item-start>
+                            <img src="{{product.image}}">
+                          </ion-avatar>
+                          <h2>{{product.name}}</h2>
+                          <p>{{units}} unidades</p>
+                        </ion-item>
+                        <ion-item-options side="left" *ngIf="units > 1">
+                          <button ion-button color="danger" (click)="Remove()" [disabled]="units <= 1">
+                            <ion-icon name="remove"></ion-icon>
+                            Quitar 1
+                          </button>
+                        </ion-item-options>
+                        <ion-item-options side="right" *ngIf="units < product.stock">
+                          <button ion-button color="secondary" (click)="Add()" [disabled]="units === product.stock">
+                            <ion-icon name="add"></ion-icon>
+                            Agregar 1
+                          </button>
+                        </ion-item-options>
+                      </ion-item-sliding>
+                    </ion-list>
+
+
+                    <br/>
+                    <button ion-button block round icon-end (click)="Save()" [disabled]="client.name === '' || client.surname === ''">
+                        Guardar
+                        <ion-icon name="checkmark-circle"></ion-icon>
+                      </button>
+            </form>
+
+        </ion-card-content>
+
+</ion-content>
